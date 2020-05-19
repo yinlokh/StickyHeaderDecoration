@@ -3,7 +3,7 @@ RecyclerView ItemDecoration to show sticky headers on vertical scrolling lists.
 Headers are provided using ViewHolders with support for recycling back to view pool and mixed
 header types.
 
-![Sticky Header Demo](demo/demo.gif)
+![Sticky Header Demo](stickyheader.gif)
 
 ## Integration steps
 Add StickyHeaderDecoration.kt to your project, provide an adapter implementing HeaderAdapter which
