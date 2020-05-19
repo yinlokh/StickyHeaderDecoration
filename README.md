@@ -5,9 +5,47 @@ header types.
 
 ![Sticky Header Demo](stickyheader.gif)
 
-## Integration steps
+## Usage
 Add StickyHeaderDecoration.kt to your project, provide an adapter implementing HeaderAdapter which
 has similar pattern to the one for RecyclerViewAdapter.
+
+### Example
+```kotlin
+recycler.addItemDecoration(decoration)
+        decoration.headerAdapter = object :
+            StickyHeaderDecoration.HeaderAdapter {
+            override fun onBindHeaderViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+                holder.itemView.text.text = "HEADER " + position
+            }
+
+            override fun onCreateHeaderViewHolder(
+                parent: ViewGroup,
+                viewType: Int
+            ): RecyclerView.ViewHolder {
+                val layout = when (viewType){
+                    0 -> R.layout.example_header
+                    1 -> R.layout.example_header2
+                    2 -> R.layout.example_header3
+                    else -> R.layout.example_header
+                }
+
+                val view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
+                return Holder(view)
+            }
+
+            override fun getHeaderCount(): Int {
+              return 10
+            }
+
+            override fun getHeaderPosition(header: Int): Int {
+              return header * 3
+            }
+
+            override fun getHeaderType(header: Int): Int {
+                return header % 3;
+            }
+        }
+```
 
 # License
      Copyright 2020 Yin Lok Ho

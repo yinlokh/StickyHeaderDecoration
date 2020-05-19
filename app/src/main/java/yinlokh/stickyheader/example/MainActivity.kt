@@ -32,6 +32,7 @@ import yinlokh.stickyheader.StickyHeaderDecoration
 class MainActivity : AppCompatActivity() {
 
     val adapter = TestRecyclerAdapter()
+    val decoration = StickyHeaderDecoration()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +40,8 @@ class MainActivity : AppCompatActivity() {
 
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(this)
-        recycler.addItemDecoration(adapter.decoration)
-        adapter.decoration.headerAdapter = object :
+        recycler.addItemDecoration(decoration)
+        decoration.headerAdapter = object :
             StickyHeaderDecoration.HeaderAdapter {
             override fun onBindHeaderViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
                 holder.itemView.text.text = "HEADER " + position
